@@ -9,7 +9,7 @@
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-		<link href="layout.css" rel="stylesheet" />
+		<link href="css/layout.css" rel="stylesheet" />
 		
 	</head>
 	<body>
@@ -24,7 +24,7 @@
 					<span class="icon-bar"></span>
 				  </button>
 				  <a class="navbar-brand" href="#">
-					<img alt="Brand" src="images/logo_nadedb.png">
+					<img alt="Brand" src="img/logo_nadedb.png">
 				</a>
 			</div>
 
@@ -56,12 +56,10 @@
 		  </div><!-- /.container-fluid -->
 		</nav>	
 		
-		
-		
-		<div id="map">
+		<div id="map" oncontextmenu="return false;">
 			<div class="map-canvas">
 				<div id="tool"></div>
-				<form action="nade_query.php">
+				<form id = "ns_coord">
 					<input type="hidden" name="nade_xMin">
 					<input type="hidden" name="nade_xMax">
 					<input type="hidden" name="nade_yMin">
@@ -72,14 +70,154 @@
 		
 		<div id="toolmenu">
 			<div id="toolselect" class="btn-group-vertical" data-toggle="buttons" role="group" aria-label="...">
+				
 				<label class="btn btn-default active">
-					<input type="radio" name="tool_selected" id="option1" autocomplete="off" checked> Radio 1 (preselected)
+					<input type="radio" name="tool_selected" id="tool_cursor" autocomplete="off" checked> Cursor
+				</label>
+				
+				<label class="btn btn-default">
+					<input type="radio" name="tool_selected" id="tool_pencil" autocomplete="off"> Pencil
+				</label>
+				
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  Path
+					</button>
+					<div class="dropdown-menu">
+					  <div class = "btn-group" data-toggle="buttons" id = "path_pallet">
+						<label class="btn btn-default">
+							<input type="radio" name="tool_selected" id="path_yellow" autocomplete="off"> Y
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="tool_selected" id="path_orange" autocomplete="off"> O
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="tool_selected" id="path_green" autocomplete="off"> G
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="tool_selected" id="path_blue" autocomplete="off"> B
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="tool_selected" id="path_purple" autocomplete="off"> P
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="tool_selected" id="path_red" autocomplete="off"> R
+						</label>
+					  </div> <!-- button group --> 
+					</div>
+				</div>
+			
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  Nades
+					</button>
+					<div class="dropdown-menu">					
+					  <div class = "btn-group" data-toggle="buttons">
+						<label class="btn btn-default">
+							<input type="radio" name="tool_selected" id="nade_smoke" autocomplete="off"> Sm
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="tool_selected" id="nade_fire" autocomplete="off"> Fi
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="tool_selected" id="nade_flash" autocomplete="off"> Fl
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="tool_selected" id="nade_he" autocomplete="off"> He
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="tool_selected" id="nade_decoy" autocomplete="off"> De
+						</label>
+					  </div> <!-- button group --> 				
+					</div>
+				</div>
+			
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  Enemy
+					</button>
+					<div class="dropdown-menu">					
+					  <div class = "btn-group" data-toggle="buttons">
+						<label class="btn btn-default">
+							<input type="radio" name="tool_selected" id="tool_danger" autocomplete="off"> !
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="tool_selected" id="tool_qmark" autocomplete="off"> ?
+						</label>
+					  </div> <!-- button group --> 				
+					</div>
+				</div>
+				
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  Tricks
+					</button>
+					<div class="dropdown-menu">					
+					  <div class = "btn-group" data-toggle="buttons">
+						<label class="btn btn-default">
+							<input type="radio" name="tool_selected" id="trick_boost" autocomplete="off"> BO
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="tool_selected" id="trick_jump" autocomplete="off"> JP
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="tool_selected" id="trick_wall" autocomplete="off"> WB
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="tool_selected" id="trick_oneway" autocomplete="off"> 1W
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="tool_selected" id="trick_rboost" autocomplete="off"> RB
+						</label>
+					  </div> <!-- button group --> 				
+					</div>
+				</div>
+				
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  Nades
+					</button>
+					<div class="dropdown-menu">					
+					  <div class = "btn-group" data-toggle="buttons">
+						<label class="btn btn-default">
+							<input type="radio" name="tool_selected" id="st_def" autocomplete="off"> Def
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="tool_selected" id="st_att" autocomplete="off"> Att
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="tool_selected" id="st_snipe" autocomplete="off"> Snipe
+						</label>
+					  </div> <!-- button group --> 				
+					</div>
+				</div>
+				
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					  Icons
+					</button>
+					<div class="dropdown-menu">					
+					  <div class = "btn-group" data-toggle="buttons">
+						<label class="btn btn-default">
+							<input type="radio" name="tool_selected" id="icon_bomb" autocomplete="off"> BOMB
+						</label>
+					  </div> <!-- button group --> 				
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<!--
+		<div id="toolmenu">
+			<div id="toolselect" class="btn-group-vertical" data-toggle="buttons" role="group" aria-label="...">
+				<label class="btn btn-default active">
+					<input type="radio" name="tool_selected" id="option1" autocomplete="off" onchange="removeTool()" checked> Radio 1 (preselected)
 				</label>
 				<label class="btn btn-default">
-					<input type="radio" name="tool_selected" id="option2" autocomplete="off"> Radio 2
+					<input type="radio" name="tool_selected" id="option2" autocomplete="off" onchange="removeTool()"> Radio 2
 				</label>
 				<label class="btn btn-default">
-					<input type="radio" name="tool_selected" id="option3" autocomplete="off"> Radio 3
+					<input type="radio" name="tool_selected" id="option3" autocomplete="off" onchange="removeTool()"> Radio 3
 				</label>
 				<div class="btn-group" role="group">
 					<button type="button" class="btn btn-default dropdown-toggle" aria-haspopup="true" aria-expanded="false">
@@ -109,12 +247,12 @@
 					</div>
 			  </div>
 			</div>
-		</div>
+		</div>-->
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-		<script type="text/javascript" src="map.js"></script>
+		<script type="text/javascript" src="js/map.js"></script>
 	</body>
 
 </html>

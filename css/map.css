@@ -1,0 +1,22 @@
+#map {
+    position: relative;
+    width: 800px;
+    height: 800px;
+    overflow:hidden;
+	margin: auto;
+
+}
+
+.map-canvas {
+    position: absolute;
+    background: url(../img/map_overview/selectmap.png);
+    width: 800px;
+	height: 800px;
+	cursor: crosshair;
+}
+
+#map .ui-draggable-dragging {
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+}

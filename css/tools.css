@@ -1,0 +1,19 @@
+.smoke-effect{
+	position: relative;
+	background: url(../img/smoke.png);
+	width: 80px;
+	height: 60px;
+	z-index: 1;
+}
+
+.nade_selection {
+	position: relative;
+	background-color: blue;
+	opacity: 0.3;
+	filter: alpha(opacity=30);
+	width: 0px;
+	height: 0px;
+	z-index: 1;
+	overflow: visible;
+	resize: both;
+}

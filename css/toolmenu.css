@@ -1,0 +1,27 @@
+#toolmenu {
+	position: relative;
+	top: -700px;
+	left: 0px;
+	width: 40px;
+}
+
+#toolmenu .btn-group-vertical{
+	width: 40px;
+}
+
+#toolselect .dropdown-menu{
+	min-width: 40px;
+	width: 150px;
+}
+
+#toolselect .dropdown-menu .btn-default{
+	margin-left: 5px;
+}
+
+#toolselect .dropdown-menu .btn-toolbar{
+	width: 150px;
+}
+
+#toolselect .btn-default{
+	border-radius: 0;
+}
